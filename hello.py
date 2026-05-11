@@ -1,0 +1,15 @@
+from flask import Flask, jsonify
+
+app = Flask(__name__, static_folder='./', static_url_path="/")
+
+@app.route("/heartbeat")
+def heartbeat():
+    return jsonify({"status": "healthy"})
+
+@app.errorhandler(404)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return app.send_static_file("./index.html")
+
+# flask --app hello run

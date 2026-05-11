@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<h1 id="main_header"> default </h1>
+	<button id="about_button" type="button" onclick="buttonClick()"> about </button>
+
+	<script>
+	const header = document.getElementById("main_header")
+	const button = document.getElementById("about_button")
+	
+	window.navigation.addEventListener("navigate", (navigateEvent) => {
+		console.log("on navigate")
+		if (!navigateEvent.canIntercept) {
+			return 
+		}
+		const url = new URL(event.destination.url);
+		const path = url.pathname;
+
+		navigateEvent.intercept({async handler() {
+			setPageFromPath(path)
+		}})
+		
+	})
+	console.log("test")
+	setPageFromPath(window.location.pathname)
+
+	function setPageFromPath(path) {
+		if (path.startsWith("/about"))
+			setAboutPage()
+		else {
+			console.log(path)
+			// "redirect" unknown paths to /
+			if (path.length > 1) {
+				history.replaceState({}, undefined, "/")
+			}
+			setHomePage()
+		}
+	}
+
+	function setHomePage() {
+		header.innerHTML = "default"
+		button.disabled=false
+	}
+	
+	function setAboutPage() {
+		header.innerHTML = "about"
+		button.disabled=true
+	}
+	
+	function buttonClick() {
+		history.pushState({}, "about", "/about")
+		setAboutPage()
+	}
+	</script>
+</body>
+</html>

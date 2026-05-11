@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<h1 id="main_header"> default </h1>
+	<button type="button" onclick="buttonClick()"> press me! </button>
+
+	Hier entsteht gleich eine Liste der Zahlen, die bereits durchgeklickt wurden:
+	<ul id="myList"></ul>
+
+	<script>
+	document.getElementById("main_header").innerHTML = "Hallo zusammen"
+	const list = document.getElementById("myList")
+	clickCount = 0
+	function buttonClick() {
+	console.log("hello button click")
+	clickCount++
+		list.innerHTML += "<li>"+clickCount+"</li>\n"
+	}
+	</script>
+</body>
+</html>

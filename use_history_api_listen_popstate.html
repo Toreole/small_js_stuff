@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<h1 id="main_header"> default </h1>
+	<button id="about_button" type="button" onclick="buttonClick()"> about </button>
+
+	<script>
+	const header = document.getElementById("main_header")
+	const button = document.getElementById("about_button")
+	
+	// initial state for this website.
+	if (!history.state) {
+		history.replaceState({ page: 0 }, "home", "")
+	}
+	else setPageFromState(history.state)
+	
+	window.addEventListener("popstate", (event) => {
+		const state = event.state
+		if (state) {
+			setPageFromState(state)
+		}
+	})
+	
+	function setPageFromState(state) {
+		switch (state.page) {
+			case 1:
+				setAboutPage()
+				break
+			case 0:
+			default:
+				setHomePage()
+				break	
+		}
+	}
+	
+	function setHomePage() {
+		header.innerHTML = "default"
+		button.disabled=false
+	}
+	
+	function setAboutPage() {
+		header.innerHTML = "about"
+		button.disabled=true
+	}
+	
+	function buttonClick() {
+		history.pushState({page: 1}, "about", "/about")
+		setAboutPage()
+	}
+	</script>
+</body>
+</html>
