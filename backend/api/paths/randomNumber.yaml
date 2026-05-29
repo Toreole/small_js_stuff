@@ -1,0 +1,22 @@
+get:
+  tags:
+    - Random
+  description: Gets a random number
+  operationId: getRandomNumber
+  parameters:
+    - in: query
+      name: max
+      description: maximum value
+      schema:
+        type: integer
+        format: int64
+      required: false
+  responses:
+    200:
+      description: ok
+      content:
+        application/json:
+          schema:
+            type: integer
+            format: int64
+            example: 42

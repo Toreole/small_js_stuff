@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: MyApi
+  description: A small test Api.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /random:
+    $ref: './paths/randomNumber.yaml'
+  
