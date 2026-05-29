@@ -3,18 +3,19 @@
     <p> hier:: {{ count }} ::hier </p>
 </template>
 <script lang="js">
+import { RandomApi } from '../../api';
 export default {
     data() {
         return {
-            count: 0
+            count: 0,
+            randomApi: new RandomApi()
         }
     }, 
     methods: {
-        async getNumber() {
-            const response = await fetch("http://localhost:8080/random")
-            if (response.ok) {
-                this.count = await response.json()
-            }
+        getNumber() {
+            this.randomApi.getRandomNumber(500).then(
+                (x) => this.count = x
+            )
         }
     }
 }
