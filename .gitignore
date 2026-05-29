@@ -1,1 +1,12 @@
+# root folder
 __pycache__
+
+# backend
+backend/.gradle
+backend/.kotlin
+backend/.idea
+
+
+#frontend
+frontend/node_modules
+frontend/.vscode
