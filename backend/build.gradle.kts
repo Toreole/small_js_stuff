@@ -29,12 +29,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     // required for generated API services
-    // implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    // implementation("javax.validation:validation-api:2.0.1.Final")
-    //implementation("jakarta.validation:validation-api:3.1.1")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("io.swagger.core.v3:swagger-annotations:2.2.22")
     implementation("io.swagger.core.v3:swagger-models:2.2.22")
+
+    // required for security config to allow CORS
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -60,8 +60,8 @@ openApiGenerate {
     inputSpec.set("$projectDir/api/openapi.yaml")
     val buildDir = layout.buildDirectory.get()
     outputDir.set("$buildDir/generated")
-    modelPackage.set("de.tm.example.model")
-    apiPackage.set("de.tm.example.api")
+    modelPackage.set("de.tm.examplewebservice.model")
+    apiPackage.set("de.tm.examplewebservice.service")
     configOptions.set(
         mapOf(
             "dateLibrary" to "java8",
