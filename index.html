@@ -13,12 +13,12 @@
 		if (!navigateEvent.canIntercept) {
 			return 
 		}
-		const url = new URL(event.destination.url);
-		const path = url.pathname;
+		//const url = new URL(event.destination.url);
+		//const path = url.pathname;
 
-		navigateEvent.intercept({async handler() {
-			setPageFromPath(path)
-		}})
+		//navigateEvent.intercept({async handler() {
+		//	setPageFromPath(path)
+		//}})
 		
 	})
 	console.log("test")
