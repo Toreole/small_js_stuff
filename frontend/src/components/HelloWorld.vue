@@ -1,5 +1,5 @@
 <script setup>
-import Example from './Example.vue';
+
 
 defineProps({
   msg: {
@@ -14,7 +14,6 @@ defineProps({
     <h1 class="green">{{ msg }}</h1>
     <h3>
       test
-      <Example></Example>
       
     </h3>
     

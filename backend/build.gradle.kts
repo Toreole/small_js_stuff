@@ -60,6 +60,7 @@ openApiGenerate {
     inputSpec.set("$projectDir/api/openapi.yaml")
     val buildDir = layout.buildDirectory.get()
     outputDir.set("$buildDir/generated")
+    // die Package-Namen müssen mit denen im Projekt übereinstimmen!
     modelPackage.set("de.tm.examplewebservice.model")
     apiPackage.set("de.tm.examplewebservice.service")
     configOptions.set(
